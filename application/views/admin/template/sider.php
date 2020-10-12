@@ -30,11 +30,11 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-fw fa-users"></i>
             <span>Manajemen User</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Pilih menu : </h6>
             <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-users/0') ?>">Admin</a>
@@ -43,12 +43,19 @@
         </div>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('dashboard-admin/manage-beasiswa') ?>">
-            <i class="fas fa-fw fa-file"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-users"></i>
             <span>Manajemen Beasiswa</span>
         </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Pilih menu : </h6>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-beasiswa') ?>">List Beasiswa</a>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-kriteria') ?>">Kriteria Beasiswa</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

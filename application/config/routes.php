@@ -65,5 +65,14 @@ $route['dashboard-admin/manage-users/detail-user/(:any)'] = 'admin/users/detail/
 $route['dashboard-admin/manage-users/edit/(:any)/(:any)'] = 'admin/users/edit/$1/$2';
 $route['dashboard-admin/manage-users/hapus-user/(:any)/(:any)'] = 'admin/users/hapus/$1/$2';
 
-// routes BEASISWA
+// routes List BEASISWA
 $route['dashboard-admin/manage-beasiswa'] = 'admin/beasiswa/index';
+$route['dashboard-admin/manage-beasiswa/tambah'] = 'admin/beasiswa/tambah';
+$route['dashboard-admin/manage-beasiswa/edit/(:any)'] = 'admin/beasiswa/edit/$1';
+$route['dashboard-admin/manage-beasiswa/hapus/(:any)'] = 'admin/beasiswa/hapus/$1';
+
+// routes Kriteria Beasiswa
+$route['dashboard-admin/manage-kriteria'] = 'admin/kriteria/index';
+$route['dashboard-admin/manage-kriteria/tambah'] = 'admin/kriteria/tambah';
+$route['dashboard-admin/manage-kriteria/edit/(:any)'] = 'admin/kriteria/edit/$1';
+$route['dashboard-admin/manage-kriteria/hapus/(:any)'] = 'admin/kriteria/hapus/$1';

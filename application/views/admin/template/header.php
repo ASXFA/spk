@@ -18,7 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url() ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/admin/vendor/datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 

@@ -58,7 +58,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header">
-            <h4 class="m-0 font-weight-bold text-primary d-inline">Infromasi Peserta</h4>
+            <h4 class="m-0 font-weight-bold text-primary d-inline">Infromasi</h4>
         </div>
         <div class="card-body">
             <?php 
