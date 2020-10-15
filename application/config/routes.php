@@ -71,8 +71,30 @@ $route['dashboard-admin/manage-beasiswa/tambah'] = 'admin/beasiswa/tambah';
 $route['dashboard-admin/manage-beasiswa/edit/(:any)'] = 'admin/beasiswa/edit/$1';
 $route['dashboard-admin/manage-beasiswa/hapus/(:any)'] = 'admin/beasiswa/hapus/$1';
 
-// routes Kriteria Beasiswa
+// routes Kriteria 
 $route['dashboard-admin/manage-kriteria'] = 'admin/kriteria/index';
 $route['dashboard-admin/manage-kriteria/tambah'] = 'admin/kriteria/tambah';
 $route['dashboard-admin/manage-kriteria/edit/(:any)'] = 'admin/kriteria/edit/$1';
 $route['dashboard-admin/manage-kriteria/hapus/(:any)'] = 'admin/kriteria/hapus/$1';
+$route['dashboard-admin/manage-kriteria/hasil-kriteria'] = 'admin/kriteria_nilai/index';
+$route['dashboard-admin/manage-kriteria/hasil-kriteria/tambah'] = 'admin/kriteria_nilai/tambah';
+$route['dashboard-admin/manage-kriteria/hasil-kriteria/ambil'] = 'admin/kriteria_nilai/ambil';
+$route['dashboard-admin/manage-kriteria/hasil-kriteria/hapus'] = 'admin/kriteria_nilai/hapus';
+$route['dashboard-admin/manage-kriteria/hasil-kriteria/kriteria-prioritas/tambah'] = 'admin/kriteria_prioritas/tambah';
+
+// routes sub kriteria
+$route['dashboard-admin/manage-subkriteria/(:any)'] = 'admin/sub_kriteria/index/$1';
+$route['dashboard-admin/manage-subkriteria/tambah/(:any)'] = 'admin/sub_kriteria/tambah/$1';
+$route['dashboard-admin/manage-subkriteria/edit/(:any)/(:any)'] = 'admin/sub_kriteria/edit/$1/$2';
+$route['dashboard-admin/manage-subkriteria/hapus/(:any)/(:any)'] = 'admin/sub_kriteria/hapus/$1/$2';
+
+// routes Nilai Kategori 
+$route['dashboard-admin/manage-nilai'] = 'admin/nilai_kategori/index';
+$route['dashboard-admin/manage-nilai/tambah'] = 'admin/nilai_kategori/tambah';
+$route['dashboard-admin/manage-nilai/edit/(:any)'] = 'admin/nilai_kategori/edit/$1';
+$route['dashboard-admin/manage-nilai/hapus/(:any)'] = 'admin/nilai_kategori/hapus/$1';
+$route['dashboard-admin/manage-nilai/hasil-nilai'] = 'admin/nilai_pasang/index';
+$route['dashboard-admin/manage-nilai/hasil-nilai/tambah'] = 'admin/nilai_pasang/tambah';
+$route['dashboard-admin/manage-nilai/hasil-nilai/ambil'] = 'admin/nilai_pasang/ambil';
+$route['dashboard-admin/manage-nilai/hasil-nilai/hapus'] = 'admin/nilai_pasang/hapus';
+$route['dashboard-admin/manage-nilai/hasil-nilai/nilai-prioritas/tambah'] = 'admin/nilai_prioritas/tambah';

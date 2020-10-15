@@ -72,7 +72,7 @@
                         <td><?= $no ?></td>
                         <td><?= $k->nama_kriteria ?></td>
                         <td width="15%" class="text-center">
-                            <a href="" class="btn btn-warning btn-sm">Lihat</a>
+                            <a href="<?= base_url('dashboard-admin/manage-subkriteria/'.$k->id) ?>" class="btn btn-warning btn-sm">Lihat</a>
                         </td>
                         <td width="10%">
                             <a href="" data-toggle="modal" data-target="#editModal<?= $k->id ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

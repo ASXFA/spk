@@ -8,6 +8,12 @@ class Kriteria_model extends CI_Model {
         return $this->db->get('kriteria');
     }
 
+    public function getById($id)
+    {
+        $this->db->where('id',$id);
+        return $this->db->get('kriteria');
+    }
+
     public function tambah()
     {
         $data = array(

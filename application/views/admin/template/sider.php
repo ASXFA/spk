@@ -43,17 +43,39 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('dashboard-admin/manage-beasiswa')  ?>">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Beasiswa</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Manajemen Beasiswa</span>
+            <i class="fas fa-fw fa-book"></i>
+            <span>Kriteria</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Pilih menu : </h6>
-            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-beasiswa') ?>">List Beasiswa</a>
-            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-kriteria') ?>">Kriteria Beasiswa</a>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-kriteria') ?>">List Kriteria</a>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-kriteria/hasil-kriteria') ?>">Hasil Kriteria</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Nilai</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Pilih menu : </h6>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-nilai') ?>">List Nilai</a>
+            <a class="collapse-item" href="<?= base_url('dashboard-admin/manage-nilai/hasil-nilai') ?>">Hasil Nilai</a>
             </div>
         </div>
     </li>
