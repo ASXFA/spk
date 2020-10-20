@@ -6,13 +6,14 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('isLogged') != 1) {
-			redirect('spk_admin');
-        }
         $this->load->model('users_model');
+        $this->load->library('encrypt');
 	}
 	public function index($level)
 	{
+        // if ($this->session->userdata('isLogged') != 1) {
+		// 	redirect('spk_admin');
+        // }
         $data['users'] = $this->users_model->getAllByLevel($level)->result();
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/template/sider');
@@ -48,15 +49,64 @@ class Users extends CI_Controller {
         if (!$this->upload->do_upload('photo')) {
             $this->session->set_flashdata('kondisi','0');
             $this->session->set_flashdata('userPesan','Gagal Upload Photo, Gunakan Photo maksimal ukuran 1Mb ');
-            redirect('dashboard-admin/manage-users/'.$level);
+            if ($level == 0) {
+                redirect('dashboard-admin/manage-users/'.$level);
+            }else{
+                redirect(base_url('registrasi'));
+            }
         }else{
             $file_name = $this->upload->data('file_name');
             $tambahData = $this->users_model->tambah($file_name,$level);
             if ($tambahData) {
-                $this->session->set_flashdata('kondisi','1');
-                $this->session->set_flashdata('userPesan','Tambah Data Berhasil, ingatkan Bahwa password default sama dengan Email :) ');
                 if ($level==0) {
+                    $this->session->set_flashdata('kondisi','1');
+                    $this->session->set_flashdata('userPesan','Tambah Data Berhasil, ingatkan Bahwa password default sama dengan Email :) ');
                     redirect('dashboard-admin/manage-users/'.$level);
+                }else{
+                    $this->session->set_flashdata('kondisi','1');
+                    $this->session->set_flashdata('userPesan','Daftar berhasil, silahkan aktivasi akun anda pada link yang kami kirimkan diEmail :)');
+                    $id_encrypt = $this->encrypt->encode($tambahData);
+                    $id_encrypt_fix = str_replace(array('=','+','/'),array('-','_','~'),$id_encrypt);
+
+                    // load mailer
+                    $this->load->library('phpmailer_lib');
+
+                    // php mailer object
+                    $mail = $this->phpmailer_lib->load();
+
+                    // SMTP CONFIG
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'rachman.agustian12@gmail.com';
+                    $mail->Password = 'fahry12031995';
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port = 587;
+
+                    $mail->setFrom('info@ifunla.com','IFUNLA');
+                    $mail->addReplyTo('info@ifunla.com','IFUNLA');
+
+                    // tambah penerima
+                    $mail->addAddress($this->input->post('email'));
+
+                    // Email subject
+                    $mail->Subject = 'Halo'.$this->input->post('nama').', Selamat bergabung';
+
+                    // set email format to HTML
+                    $mail->isHTML(true);
+                    
+                    // Email body content
+                    $mailContent = "<h1> Selamat datang di aplikasi penyedia beasiswa </h1>
+                        <p> terimakasih telah mendaftar di aplikasi penyedia beasiswa Universitas Langlangbuana, mohon lakukan verifikasi akun anda dengan meng-klik link yang kami berikan agar akun anda bisa login di aplikasi kami. </p>
+                        <br>    
+                        <p>".base_url('verifikasi/'.$id_encrypt_fix)."</p>
+                        <br>
+                        <h5> Regards, </h5>
+                        <h5> Tim Administrasi </h5>    
+                    ";
+                    $mail->Body = $mailContent;
+                    $mail->send();
+                    redirect(base_url());
                 }
             }
         }
@@ -117,6 +167,16 @@ class Users extends CI_Controller {
             $this->session->set_flashdata('userPesan','Data Gagal dihapus !');
             redirect('dashboard-admin/manage-users/'.$level);
         }
+    }
+
+    public function verifikasi($id)
+    {
+        $id_encrypt_fix = str_replace(array('-','_','~'),array('=','+','/'),$id);
+        $id_fix = $this->encrypt->decode($id_encrypt_fix);
+        $request = $this->users_model->verifikasi($id_fix);
+		$this->load->view('template/header');
+		$this->load->view('verifikasi');
+		$this->load->view('template/footer');
     }
 
     public function cekEmail()

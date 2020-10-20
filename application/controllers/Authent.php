@@ -8,7 +8,21 @@ class Authent extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	public function aksi_login()
+	public function loginUser()
+	{
+		$this->load->view('template/header');
+		$this->load->view('loginUser');
+		$this->load->view('template/footer');
+	}
+
+	public function registrasi()
+	{
+		$this->load->view('template/header');
+		$this->load->view('registrasi');
+		$this->load->view('template/footer');
+	}
+
+	public function aksi_login($level)
 	{
 		// load model 
 		$this->load->model('users_model');
@@ -27,22 +41,43 @@ class Authent extends CI_Controller {
 					'npm' => $ambilDataUser->npm,
 					'email' => $ambilDataUser->email,
 					'photo' => $ambilDataUser->photo,
+					'status' => $ambilDataUser->status,
 					'level' => $ambilDataUser->level
 				);
-				$this->session->set_userdata($sessionData);
-				if ($ambilDataUser->level == 0) {
-					$this->session->set_flashdata('kondisi','1');
-					$this->session->set_flashdata('pesan','Selamat Datang ');
-					redirect('dashboard-admin');
-				}else if ($ambilDataUser->level == 1) {
-					$this->session->set_flashdata('kondisi','1');
-					$this->session->set_flashdata('pesan','Selamat Datang ');
-					echo "USER";
+
+				if ($ambilDataUser->status == 0) {
+					if ($level==0) {
+						$this->session->set_flashdata('kondisi','0');
+						$this->session->set_flashdata('pesan','Akun anda belum diaktifkan, mohon hubungi Administrator !');
+						redirect('spk_admin');
+					}else{
+						$this->session->set_flashdata('kondisi','0');
+						$this->session->set_flashdata('userPesan','Akun anda belum melakukan verifikasi via Link yang kami kirimkan via Email ');
+						redirect('login-user');
+					}
+				}else{
+					$this->session->set_userdata($sessionData);
+					if ($ambilDataUser->level == 0) {
+						$this->session->set_flashdata('kondisi','1');
+						$this->session->set_flashdata('pesan','Selamat Datang ');
+						redirect('dashboard-admin');
+					}else if ($ambilDataUser->level == 1) {
+						$this->session->set_flashdata('kondisi','1');
+						$this->session->set_flashdata('pesan','Selamat Datang ');
+						echo "USER";
+					}
 				}
+
 			}else{
-				$this->session->set_flashdata('kondisi','0');
-				$this->session->set_flashdata('pesan','Password Tidak Cocok . . . !');
-				redirect('spk_admin');
+				if ($level==0) {
+					$this->session->set_flashdata('kondisi','0');
+					$this->session->set_flashdata('pesan','Password Tidak Cocok . . . !');
+					redirect('spk_admin');
+				}else{
+					$this->session->set_flashdata('kondisi','0');
+					$this->session->set_flashdata('userPesan','Password Tidak Cocok . . . !');
+					redirect('login-user');
+				}
 			}
 		}else{
 			$this->session->set_flashdata('kondisi','0');

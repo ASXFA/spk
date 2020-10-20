@@ -67,7 +67,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Selamat Datang Kembali !</h1>
                   </div>
-                  <form action="<?= base_url('auth') ?>" class="user" method="post">
+                  <form action="<?= base_url('auth/0') ?>" class="user" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Email ... ">
                     </div>

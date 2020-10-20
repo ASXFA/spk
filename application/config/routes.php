@@ -54,7 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['spk_admin'] = 'authent/index';
-$route['auth'] = 'authent/aksi_login';
+$route['auth/(:any)'] = 'authent/aksi_login/$1';
 
 $route['dashboard-admin'] = 'admin/dashboard/index';
 
@@ -98,3 +98,9 @@ $route['dashboard-admin/manage-nilai/hasil-nilai/tambah'] = 'admin/nilai_pasang/
 $route['dashboard-admin/manage-nilai/hasil-nilai/ambil'] = 'admin/nilai_pasang/ambil';
 $route['dashboard-admin/manage-nilai/hasil-nilai/hapus'] = 'admin/nilai_pasang/hapus';
 $route['dashboard-admin/manage-nilai/hasil-nilai/nilai-prioritas/tambah'] = 'admin/nilai_prioritas/tambah';
+
+// Landing
+$route['login-user'] = 'Authent/loginUser';
+$route['registrasi'] = 'Authent/registrasi';
+$route['action-registrasi/(:any)'] = 'admin/users/tambah/$1';
+$route['verifikasi/(:any)'] = 'admin/users/verifikasi/$1';

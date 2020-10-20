@@ -31,6 +31,7 @@ class Users_model extends CI_Model {
 				'photo' => $file_name,
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 				'password' => password_hash($this->input->post('email'), PASSWORD_DEFAULT),
+				'status' => 0,
 				'level' => 0
 			);
 			$query = $this->db->insert('user',$data);
@@ -49,11 +50,13 @@ class Users_model extends CI_Model {
 				'photo' => $file_name,
 				'password' => password_hash($this->input->post('npm'), PASSWORD_DEFAULT) ,
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'status' => 0,
 				'level' => 1
 			);
-			$query = $this->db->insert('user',$data);
+			$this->db->insert('user',$data);
+			$query =  $this->db->insert_id();
 			if ($query) {
-				return TRUE;
+				return $query;
 			}else{
 				return FALSE;
 			}
@@ -94,6 +97,18 @@ class Users_model extends CI_Model {
 			}else{
 				return FALSE;
 			}
+		}
+	}
+
+	public function verifikasi($id)
+	{
+		$data = array('status'=>1);
+		$this->db->where('id',$id);
+		$data = $this->db->update('user',$data);
+		if ($data) {
+			return TRUE;
+		}else{
+			return FALSE;
 		}
 	}
 

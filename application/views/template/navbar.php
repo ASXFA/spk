@@ -24,10 +24,10 @@
                     </div>             
                     <div class="col-xl-4 col-lg-2 col-md-3">
                         <div class="header-right-btn f-right d-none d-lg-block">
-                            <a href="#" class="btn header-btn" style="background-color:#ff5c97">Registrasi</a>
+                            <a href="<?= base_url('registrasi') ?>" class="btn header-btn" style="background-color:#ff5c97">Registrasi</a>
                         </div>
                         <div class="header-right-btn f-right d-none d-lg-block mr-2">
-                            <a href="#" class="btn header-btn">Login</a>
+                            <a href="<?= base_url('login-user') ?>" class="btn header-btn">Login</a>
                         </div>
                     </div>
                     <!-- Mobile Menu -->

@@ -1,3 +1,50 @@
+<?php 
+    if ($this->session->flashdata('userPesan')) {
+        if ($this->session->flashdata('kondisi')=="1") {
+    ?>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 8000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: '<?= $this->session->flashdata('userPesan') ?>'
+        })
+    </script>
+    <?php
+        }else{
+    ?>
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 8000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'error',
+                    title: '<?= $this->session->flashdata('userPesan') ?>'
+                })
+            </script>
+    <?php
+        }
+    }
+?>
 <main>
     <!-- Slider Area Start-->
     <div class="slider-area ">
