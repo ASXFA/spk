@@ -95,6 +95,7 @@ class Users_model extends CI_Model {
 				'photo' => $file_name,
 				'jenis_kelamin' => $this->input->post('jenis_kelamin')
 			);
+			$this->db->where('id',$id);
 			$query = $this->db->update('user',$data);
 			if ($query) {
 				return TRUE;

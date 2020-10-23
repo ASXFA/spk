@@ -142,26 +142,39 @@
             <div class="row">
                 <div class="col-lg-12">
                     <table class="table table-borderless">
-                        <tr class="border-left-primary">
-                            <td width="30%">IPK </td>
-                            <td> > 3.60</td>
-                            <td width="10%"><a href="" class="btn btn-info btn-sm"><i class="fa fa-image"></i></a></td>
-                        </tr>
-                        <tr class="border-right-primary">
-                            <td width="30%">Penghasilan Orang Tua </td>
-                            <td> > Rp. 2.500.000,- </td>
-                            <td width="10%"><a href="" class="btn btn-info btn-sm"><i class="fa fa-image"></i></a></td>
-                        </tr>
-                        <tr class="border-left-primary">
-                            <td width="30%">Prestasi Akademik </td>
-                            <td>Tingkat Kotamadya</td>
-                            <td width="10%"><a href="" class="btn btn-info btn-sm"><i class="fa fa-image"></i></a></td>
-                        </tr>
-                        <tr class="border-right-primary">
-                            <td width="30%">Prestasi Non Akademik</td>
-                            <td>Tingakat Nasional</td>
-                            <td width="10%"><a href="" class="btn btn-info btn-sm"><i class="fa fa-image"></i></a></td>
-                        </tr>
+                        <?php 
+                            $no = 1;
+                            foreach($up as $up):
+                                foreach($kriteria as $k):
+                                    if($k->id == $up->kriteria_id){
+                                        foreach($subkriteria as $sb):
+                                            if($sb->id == $up->subkriteria_id){
+                                                echo " <tr class='border-left-primary'>
+                                                        <td width='30%'>".$k->nama_kriteria."</td>
+                                                        <td>".$sb->nama_subkriteria."</td>
+                                                        <td width='10%'><a href='#' id='lihat".$no."' class='btn btn-info btn-sm'><i class='fa fa-image'></i></a></td>
+                                                ";
+                                                ?>
+                                                 <script src="<?= base_url() ?>assets/admin/vendor/jquery/jquery.min.js"></script>
+                                                <script>
+                                                    $('#lihat<?= $no ?>').on('click', function (e) {
+                                                        e.preventDefault();
+                                                        Swal.fire({
+                                                            imageUrl: '<?= base_url('assets/user/img/persyaratan/'.$up->photo) ?>',
+                                                            imageWidth: 500,
+                                                            imageHeight: 400,
+                                                            imageAlt: 'Custom image',
+                                                        });
+                                                    });
+                                                </script>
+                                            <?php
+                                            }
+                                        endforeach;
+                                    }
+                                endforeach;
+                                $no++;
+                            endforeach;
+                        ?>
                     </table>
                 </div>
             </div>

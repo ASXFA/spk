@@ -68,7 +68,6 @@
                         <th>Mulai Periode</th>
                         <th>Akhir Periode</th>
                         <th>Status</th>
-                        <th>Persyaratan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -94,9 +93,6 @@
                                 }
                             ?>
                             <!-- <span class="badge badge-warning">Belum Tayang</span> -->
-                        </td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-primary btn-sm">Lihat</a>
                         </td>
                         <td>
                             <a href="<?= base_url('assets/file/beasiswa/'.$b->file) ?>" class="btn btn-primary btn-sm"><i class="fa fa-download" title="download file"></i></a>

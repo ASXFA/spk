@@ -24,6 +24,12 @@ class Users extends CI_Controller {
     
     public function detail($id)
     {
+        $this->load->model('user_persyaratan_model');
+        $this->load->model('kriteria_model');
+        $this->load->model('sub_kriteria_model');
+        $data['up'] = $this->user_persyaratan_model->getById($id)->result();
+        $data['kriteria'] = $this->kriteria_model->getAll()->result();
+        $data['subkriteria'] = $this->sub_kriteria_model->getAll()->result();
         $data['user'] = $this->users_model->getAllById($id)->row();
         $this->load->view('admin/template/header');
 		$this->load->view('admin/template/sider');
