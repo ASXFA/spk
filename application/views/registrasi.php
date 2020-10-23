@@ -51,6 +51,7 @@
             <div class="col-lg-12">
                 <div class="card mt-10 ml-30 mr-30 borde border-white">
                     <div class="card-body mt-20 mb-50">
+                    <h4 class="mb-20"><a href="<?= base_url() ?>"><i class="fa fa-arrow-left"></i> Kembali</a></h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card border-white">

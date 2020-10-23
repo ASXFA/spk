@@ -10,7 +10,7 @@
                   <div class="single-footer-caption mb-30">
                        <!-- logo -->
                       <div class="footer-logo">
-                          <a href="index.html"><img src="<?= base_url() ?>assets/landing/img/logo/logoo.png" width="200px" alt=""></a>
+                          <a><img src="<?= base_url() ?>assets/landing/img/logo/logoo.png" width="200px" alt=""></a>
                       </div>
                       <div class="footer-tittle">
                           <div class="footer-pera">
