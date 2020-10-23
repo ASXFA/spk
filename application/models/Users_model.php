@@ -9,6 +9,12 @@ class Users_model extends CI_Model {
         return $this->db->get('user');
 	}
 
+	public function getAll()
+	{
+		$this->db->not_like('id',$this->session->userdata('id'));
+		return $this->db->get('user');
+	}
+
 	public function getAllByLevel($level)
 	{
 		$this->db->where('level',$level);

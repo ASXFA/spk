@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>SEO HTML-5 Template </title>
+        <title>Aplikasi Beasiswa </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/landing//img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/landing/img/logo/logoo.png">
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="<?= base_url() ?>assets/landing//css/bootstrap.min.css">
@@ -33,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="<?= base_url() ?>assets/landing/img/logo/logo.png" alt="">
+                    <img src="<?= base_url() ?>assets/landing/img/logo/logoo.png" alt="">
                 </div>
             </div>
         </div>
