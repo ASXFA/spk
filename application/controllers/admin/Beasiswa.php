@@ -97,4 +97,21 @@ class Beasiswa extends CI_Controller {
 		}
 	}
 
+	public function editJumlahPeserta($id)
+	{
+		$ambil = $this->beasiswa_model->getById($id)->row();
+		$jmlahpeserta = $ambil->jumlah_peserta;
+		$tambah = 1 + $jmlahpeserta;
+		$query = $this->beasiswa_model->editJumlahPeserta($id,$tambah);
+		if ($query) {
+			$this->session->set_flashdata('kondisi','1');
+			$this->session->set_flashdata('pesanBeasiswa','Anda berhasil bergabung, Tunggu notifikasi perihal kelolosan anda pada email yang anda gunakan saat ini, Terimakasih !');
+			redirect('user-panel/beasiswa');
+		}else{
+			$this->session->set_flashdata('kondisi','0');
+			$this->session->set_flashdata('pesanBeasiswa','Anda gagal bergabung, silahkan coba kembali !');
+			redirect('user-panel/beasiswa');
+		}
+	}
+
 }

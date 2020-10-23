@@ -70,6 +70,7 @@ $route['dashboard-admin/manage-beasiswa'] = 'admin/beasiswa/index';
 $route['dashboard-admin/manage-beasiswa/tambah'] = 'admin/beasiswa/tambah';
 $route['dashboard-admin/manage-beasiswa/edit/(:any)'] = 'admin/beasiswa/edit/$1';
 $route['dashboard-admin/manage-beasiswa/hapus/(:any)'] = 'admin/beasiswa/hapus/$1';
+$route['dashboard-admin/manage-beasiswa/ediJmlh/(:any)'] = 'admin/beasiswa/editJumlahPeserta/$1';
 
 // routes Kriteria 
 $route['dashboard-admin/manage-kriteria'] = 'admin/kriteria/index';
@@ -99,8 +100,25 @@ $route['dashboard-admin/manage-nilai/hasil-nilai/ambil'] = 'admin/nilai_pasang/a
 $route['dashboard-admin/manage-nilai/hasil-nilai/hapus'] = 'admin/nilai_pasang/hapus';
 $route['dashboard-admin/manage-nilai/hasil-nilai/nilai-prioritas/tambah'] = 'admin/nilai_prioritas/tambah';
 
+// routes Peserta
+$route['dashboard-admin/manage-peserta'] = 'admin/peserta/index';
+$route['dashboard-admin/manage-peserta/kirim/(:any)'] = 'admin/peserta/kirimNotifikasi/$1';
+$route['dashboard-admin/manage-peserta/cetak/(:any)'] = 'admin/peserta/cetak/$1';
+
 // Landing
 $route['login-user'] = 'Authent/loginUser';
 $route['registrasi'] = 'Authent/registrasi';
 $route['action-registrasi/(:any)'] = 'admin/users/tambah/$1';
 $route['verifikasi/(:any)'] = 'admin/users/verifikasi/$1';
+
+// user
+$route['user-panel'] = 'Page_user/dashboard';
+$route['user-panel/profil'] = 'Page_user/profil';
+$route['user-panel/check-password'] = 'admin/users/cek_password';
+$route['user-panel/update-password'] = 'admin/users/update_password';
+$route['user-panel/persyaratan'] = 'Page_user/persyaratan';
+$route['user-panel/persyaratan/isi-persyaratan'] = 'Page_user/isi_persyaratan';
+$route['user-panel/persyaratan/tambah'] = 'admin/persyaratan_user/tambah';
+$route['user-panel/persyaratan/cek-persyaratan'] = 'admin/persyaratan_user/cek_persyaratan';
+$route['user-panel/beasiswa'] = 'Page_user/beasiswa';
+$route['user-panel/beasiswa/gabung/(:any)'] = 'admin/peserta/tambah/$1';

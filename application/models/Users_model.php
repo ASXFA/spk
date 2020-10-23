@@ -87,11 +87,9 @@ class Users_model extends CI_Model {
 				'fakultas'=> $this->input->post('fakultas'),
 				'jurusan'=> $this->input->post('jurusan'),
 				'photo' => $file_name,
-				'password' => password_hash($this->input->post('npm'), PASSWORD_DEFAULT) ,
-				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-				'level' => 1
+				'jenis_kelamin' => $this->input->post('jenis_kelamin')
 			);
-			$query = $this->db->insert('user',$data);
+			$query = $this->db->update('user',$data);
 			if ($query) {
 				return TRUE;
 			}else{
@@ -106,6 +104,18 @@ class Users_model extends CI_Model {
 		$this->db->where('id',$id);
 		$data = $this->db->update('user',$data);
 		if ($data) {
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function gantiPassword($password)
+	{
+		$data = array('password'=>$password);
+		$this->db->where('id',$this->session->userdata('id'));
+		$query = $this->db->update('user',$data);
+		if ($query) {
 			return TRUE;
 		}else{
 			return FALSE;

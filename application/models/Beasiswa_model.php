@@ -8,6 +8,12 @@ class Beasiswa_model extends CI_Model {
         return $this->db->get('beasiswa');
     }
 
+    public function getById($id)
+    {
+        $this->db->where('id',$id);
+        return $this->db->get('beasiswa');
+    }
+
     public function tambah($file_name)
     {
         $data = array(
@@ -51,6 +57,18 @@ class Beasiswa_model extends CI_Model {
     {
         $this->db->where('id',$id);
         $query = $this->db->delete('beasiswa');
+        if ($query) {
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function editJumlahPeserta($id,$jmlh)
+    {
+        $data = array('jumlah_peserta' => $jmlh);
+        $this->db->where('id',$id);
+        $query = $this->db->update('beasiswa',$data);
         if ($query) {
             return TRUE;
         }else{

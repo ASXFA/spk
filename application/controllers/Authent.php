@@ -64,7 +64,7 @@ class Authent extends CI_Controller {
 					}else if ($ambilDataUser->level == 1) {
 						$this->session->set_flashdata('kondisi','1');
 						$this->session->set_flashdata('pesan','Selamat Datang ');
-						echo "USER";
+						redirect('user-panel');
 					}
 				}
 
@@ -90,7 +90,7 @@ class Authent extends CI_Controller {
 	{
 		$this->session->set_userdata('isLogged',0);
 		$this->session->sess_destroy();
-		redirect('spk_admin');
+		redirect(base_url());
 	}
 
 }

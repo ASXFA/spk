@@ -81,7 +81,7 @@
                                             <div class="mt-10 mb-10">
                                                 <div class="generating-cap">
                                                     <h5>Jenis Kelamin</h5>
-                                                    <div class="default-select" id="default-select"">
+                                                    <div class="form-select" id="default-select"">
                                                         <select name="jenis_kelamin">
                                                             <option value="Pria">Pria</option>
                                                             <option value="Wanita">Wanita</option>

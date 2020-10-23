@@ -90,7 +90,7 @@ class Users extends CI_Controller {
                     $mail->addAddress($this->input->post('email'));
 
                     // Email subject
-                    $mail->Subject = 'Halo'.$this->input->post('nama').', Selamat bergabung';
+                    $mail->Subject = 'Halo '.$this->input->post('nama').', Selamat bergabung !';
 
                     // set email format to HTML
                     $mail->isHTML(true);
@@ -134,6 +134,8 @@ class Users extends CI_Controller {
                 $this->session->set_flashdata('userPesan','Edit Data Berhasil !');
                 if ($level==0) {
                     redirect('dashboard-admin/manage-users/detail-user/'.$id);
+                }else{
+                    redirect('user-panel/profil');
                 }
             }
         }else{
@@ -144,6 +146,8 @@ class Users extends CI_Controller {
                 $this->session->set_flashdata('userPesan','Edit Data Berhasil !');
                 if ($level==0) {
                     redirect('dashboard-admin/manage-users/detail-user/'.$id);
+                }else{
+                    redirect('user-panel/profil');
                 }
             }
         }
@@ -187,6 +191,38 @@ class Users extends CI_Controller {
             echo "1";
         }else{
             echo "0";
+        }
+    }
+
+    public function cek_password()
+    {
+
+		$email = $this->session->userdata('email');
+		$password = $this->input->post('pswd_lama');
+		$cekUserEmail = $this->users_model->cekUserEmail($email);
+
+		if ($cekUserEmail->num_rows() > 0 ) {
+			$ambilDataUser = $cekUserEmail->row();
+			if (password_verify($password,$ambilDataUser->password)) {
+                echo "1";
+            }else{
+                echo "0";
+            }
+        }
+    }
+
+    public function update_password()
+    {
+        $password_baru = password_hash($this->input->post('password_baru'),PASSWORD_DEFAULT);
+        $data = $this->users_model->gantiPassword($password_baru);
+        if ($data) {
+            $this->session->set_flashdata('kondisi','1');
+            $this->session->set_flashdata('pesan','Password Berhasil diganti !');
+            redirect('authent/logout');
+        }else{
+            $this->session->set_flashdata('kondisi','0');
+            $this->session->set_flashdata('pesan','Password Gagal diganti !');
+            redirect('user-panel/profil');
         }
     }
 }

@@ -80,6 +80,13 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('dashboard-admin/manage-peserta') ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Peserta</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

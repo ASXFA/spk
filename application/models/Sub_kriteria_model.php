@@ -9,6 +9,11 @@ class Sub_kriteria_model extends CI_Model {
         return $this->db->get('subkriteria');
     }
 
+    public function getAll()
+    {
+        return $this->db->get('subkriteria');
+    }
+
     public function tambah($id)
     {
         $data = array(

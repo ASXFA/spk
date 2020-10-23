@@ -3,12 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Nilai_prioritas_model extends CI_Model {
 
-    // public function getAll()
-    // {
-    //     $this->db->order_by('kriteria_id_from');
-    //     $this->db->order_by('kriteria_id_to','ASC');
-    //     return $this->db->get('kriteria_nilai');
-    // }
+    public function getAll()
+    {
+        $this->db->order_by('nilai_id','ASC');
+        return $this->db->get('nilai_prioritas');
+    }
 
     public function tambah($nilai_id, $prioritas, $subprioritas)
     {

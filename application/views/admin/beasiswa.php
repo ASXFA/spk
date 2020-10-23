@@ -82,7 +82,19 @@
                         <td><?= $b->jumlah_peserta ?></td>
                         <td><?= $b->periode_awal ?></td>
                         <td><?= $b->periode_akhir ?></td>
-                        <td><span class="badge badge-warning">Belum Tayang</span></td>
+                        <td>
+                            <?php 
+                                $tgl_skrg = date('Y-m-d');
+                                if($tgl_skrg < $b->periode_awal){
+                                    echo "<span class='badge badge-warning'>Belum Tayang</span>";
+                                }else if($b->periode_awal == $tgl_skrg || ($tgl_skrg > $b->periode_awal) && ($tgl_skrg <= $b->periode_akhir) ){
+                                    echo "<span class='badge badge-success'>Sudah Tayang</span>";
+                                }else if($tgl_skrg >= $b->periode_akhir ){
+                                    echo "<span class='badge badge-secondary'>Sudah Berakhir</span>";
+                                }
+                            ?>
+                            <!-- <span class="badge badge-warning">Belum Tayang</span> -->
+                        </td>
                         <td class="text-center">
                             <a href="" class="btn btn-primary btn-sm">Lihat</a>
                         </td>
